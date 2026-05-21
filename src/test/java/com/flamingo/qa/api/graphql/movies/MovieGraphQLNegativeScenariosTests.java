@@ -2,6 +2,7 @@ package com.flamingo.qa.api.graphql.movies;
 
 import com.flamingo.qa.api.graphql.client.MovieGraphQLClient;
 import com.flamingo.qa.api.graphql.dto.ErrorResponse;
+import io.qameta.allure.Feature;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 @Tag("api")
 @Execution(ExecutionMode.CONCURRENT)
+@Feature("Movies GraphQL - negative scenarios")
 public class MovieGraphQLNegativeScenariosTests {
 
     private final MovieGraphQLClient movieGraphQLClient = new MovieGraphQLClient();

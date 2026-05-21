@@ -5,6 +5,7 @@ import com.flamingo.qa.api.restapi.client.BookingClient;
 import com.flamingo.qa.api.restapi.dto.Booking;
 import com.flamingo.qa.api.restapi.dto.BookingDates;
 import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import lombok.val;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.SoftAssertions;
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("api")
 @Execution(ExecutionMode.CONCURRENT)
+@Feature("Booking API - positive scenarios")
 public class BookingTests {
 
     private final BookingClient bookingClient = new BookingClient();

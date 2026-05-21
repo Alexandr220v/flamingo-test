@@ -5,6 +5,7 @@ import com.flamingo.qa.api.restapi.bookings.BookingDataProvider.InvalidUpdateBoo
 import com.flamingo.qa.api.restapi.client.BookingClient;
 import com.flamingo.qa.api.restapi.dto.Booking;
 import com.flamingo.qa.api.restapi.dto.BookingDates;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.SoftAssertions;
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("api")
 @Execution(ExecutionMode.CONCURRENT)
+@Feature("Booking API - negative scenarios")
 class BookingNegativeScenariosTests {
 
     private final BookingClient bookingClient = new BookingClient();

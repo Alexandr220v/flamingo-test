@@ -1,6 +1,8 @@
 package com.flamingo.qa.ui;
 
 import com.flamingo.qa.ui.dto.Employee;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("ui")
 @Execution(ExecutionMode.CONCURRENT)
+@Feature("Employee Management")
 class RegisterNewEmployeeTests extends BaseTest {
 
 

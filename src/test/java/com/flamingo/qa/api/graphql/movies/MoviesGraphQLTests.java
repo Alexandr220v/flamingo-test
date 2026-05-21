@@ -5,6 +5,7 @@ import com.flamingo.qa.api.graphql.dto.MovieResponse;
 import com.flamingo.qa.api.graphql.dto.MoviesResponse;
 import com.flamingo.qa.api.graphql.dto.MoviesResponse.Movie;
 import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("api")
 @Execution(ExecutionMode.CONCURRENT)
+@Feature("Movies GraphQL")
 class MoviesGraphQLTests {
 
     private final MovieGraphQLClient movieGraphQLClient = new MovieGraphQLClient();
