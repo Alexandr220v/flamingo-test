@@ -18,19 +18,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
           cache: maven
+
       - name: Run API tests
         run: mvn -B -Dgroups=api test
+
       - name: Upload Surefire reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: surefire-api
           path: target/surefire-reports
+
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
@@ -43,27 +47,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
           cache: maven
+
       - name: Install Playwright browsers
         run: mvn -B compile exec:java -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps chromium" -D exec.classpathScope=compile
+
       - name: Run UI tests
         run: mvn -B -Dgroups=ui -Dui.headless=true test
+
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: target/screenshots
+
       - name: Upload Surefire reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: surefire-ui
           path: target/surefire-reports
+
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
@@ -112,12 +122,16 @@ jobs:
             cp -r gh-pages/history allure-results-combined/
           fi
 
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline --save-dev
+
       - name: Build Allure Report
-        uses: simple-elf/allure-report-action@v1.11
-        with:
-          allure_results: allure-results-combined
-          allure_report: allure-report
-          allure_history: allure-history
+        run: allure generate allure-results-combined --clean -o allure-report
+
+      - name: Save Allure History for trend tracking
+        run: |
+          mkdir -p allure-report/history
+          cp -r allure-report/history allure-results-combined/ || true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
