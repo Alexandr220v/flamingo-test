@@ -113,4 +113,5 @@ It runs API and UI tests in parallel jobs on every push / PR, uploads Surefire r
 Allure results, and UI screenshots as artifacts.
 
 Latest run can be found here: https://github.com/Alexandr220v/flamingo-test/actions/workflows/ci.yml 
+
 Allure report: https://alexandr220v.github.io/flamingo-test/ 
